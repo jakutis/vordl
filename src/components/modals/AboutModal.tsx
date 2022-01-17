@@ -50,23 +50,23 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900"
                   >
-                    About
+                    Apie
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      This is an open source clone of the game Wordle -{' '}
+                      Tai yra žaidimo „Wordle“ atviro kodo klonas -{' '}
                       <a
                         href="https://github.com/jakutis/wordle"
                         className="underline font-bold"
                       >
-                        check out the code here
+                        žiūrėk kodą čia
                       </a>{' '}
                       and{' '}
                       <a
                         href="https://www.powerlanguage.co.uk/wordle/"
                         className="underline font-bold"
                       >
-                        play the original here
+                        žaisk originalą čia
                       </a>
                     </p>
                   </div>
