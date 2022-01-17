@@ -51,46 +51,45 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900"
                   >
-                    How to play
+                    Kaip žaisti?
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Guess the WORDLE in 6 tries. After each guess, the color
-                      of the tiles will change to show how close your guess was
-                      to the word.
+                      Atspėk žodį per 6 bandymus. Po kiekvieno spėjimo, plytelės
+                      spalvos keisis ir parodys kiek artimas buvo tavo spėjimas.
                     </p>
 
                     <div className="flex justify-center mb-1 mt-4">
-                      <Cell value="W" status="correct" />
-                      <Cell value="E" />
+                      <Cell value="R" status="correct" />
                       <Cell value="A" />
-                      <Cell value="R" />
-                      <Cell value="Y" />
-                    </div>
-                    <p className="text-sm text-gray-500">
-                      The letter W is in the word and in the correct spot.
-                    </p>
-
-                    <div className="flex justify-center mb-1 mt-4">
-                      <Cell value="P" />
-                      <Cell value="I" />
-                      <Cell value="L" status="present" />
-                      <Cell value="O" />
                       <Cell value="T" />
+                      <Cell value="A" />
+                      <Cell value="S" />
                     </div>
                     <p className="text-sm text-gray-500">
-                      The letter L is in the word but in the wrong spot.
+                      Raidė R yra žodyje ir yra teisingoje vietoje.
                     </p>
 
                     <div className="flex justify-center mb-1 mt-4">
-                      <Cell value="V" />
-                      <Cell value="A" />
-                      <Cell value="G" />
-                      <Cell value="U" status="absent" />
                       <Cell value="E" />
+                      <Cell value="R" />
+                      <Cell value="D" status="present" />
+                      <Cell value="V" />
+                      <Cell value="Ė" />
                     </div>
                     <p className="text-sm text-gray-500">
-                      The letter U is not in the word in any spot.
+                      Raidė D yra žodyje, bet yra neteisingoje vietoje.
+                    </p>
+
+                    <div className="flex justify-center mb-1 mt-4">
+                      <Cell value="Š" />
+                      <Cell value="O" />
+                      <Cell value="K" />
+                      <Cell value="I" status="absent" />
+                      <Cell value="S" />
+                    </div>
+                    <p className="text-sm text-gray-500">
+                      Raidės I nėra žodyje jokioje vietoje.
                     </p>
                   </div>
                 </div>
