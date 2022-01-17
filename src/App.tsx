@@ -1,4 +1,4 @@
-import { InformationCircleIcon } from '@heroicons/react/outline'
+import { InformationCircleIcon, XIcon } from '@heroicons/react/outline'
 import { useState, useEffect } from 'react'
 import { Alert } from './components/alerts/Alert'
 import { Grid } from './components/grid/Grid'
@@ -9,6 +9,7 @@ import { WinModal } from './components/modals/WinModal'
 import { isWordInWordList, isWinningWord, solution } from './lib/words'
 import {
   loadGameStateFromLocalStorage,
+  resetGameState,
   saveGameStateToLocalStorage,
 } from './lib/localStorage'
 
@@ -96,6 +97,10 @@ function App() {
         <InformationCircleIcon
           className="h-6 w-6 cursor-pointer"
           onClick={() => setIsInfoModalOpen(true)}
+        />
+        <XIcon
+          className="h-6 w-6 cursor-pointer"
+          onClick={() => {resetGameState(); window.location.reload();}}
         />
       </div>
       <Grid guesses={guesses} currentGuess={currentGuess} />

@@ -5,6 +5,10 @@ type StoredGameState = {
   solution: string
 }
 
+export const resetGameState = () => {
+  localStorage.setItem(gameStateKey, '')
+}
+
 export const saveGameStateToLocalStorage = (gameState: StoredGameState) => {
   localStorage.setItem(gameStateKey, JSON.stringify(gameState))
 }
