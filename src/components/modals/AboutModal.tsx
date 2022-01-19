@@ -56,7 +56,7 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
                     <p className="text-sm text-gray-500">
                       Tai yra žaidimo „Wordle“ atviro kodo klonas -{' '}
                       <a
-                        href="https://github.com/jakutis/wordle"
+                        href="https://github.com/jakutis/vordl"
                         className="underline font-bold"
                       >
                         žiūrėk kodą čia

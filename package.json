@@ -1,6 +1,6 @@
 {
-  "name": "wordle",
-  "homepage": "https://jakutis.github.io/wordle",
+  "name": "vordl",
+  "homepage": "https://jakutis.github.io/vordl",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
