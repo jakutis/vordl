@@ -2,6 +2,7 @@ import { WORDS } from '../constants/wordlist'
 import ParkMiller from 'park-miller';
 
 const msInDay = 86400000
+// copied from https://stackoverflow.com/a/2450976
 const shuffle = (array: any[], random: () => number) => {
   let currentIndex = array.length, randomIndex;
 
