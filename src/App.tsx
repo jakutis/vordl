@@ -1,4 +1,6 @@
-import { InformationCircleIcon, XIcon } from '@heroicons/react/outline'
+import { InformationCircleIcon } from '@heroicons/react/outline'
+import { XIcon } from '@heroicons/react/outline'
+import { ChartBarIcon } from '@heroicons/react/outline'
 import { useState, useEffect } from 'react'
 import { Alert } from './components/alerts/Alert'
 import { Grid } from './components/grid/Grid'
