@@ -1,23 +1,17 @@
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { CheckIcon } from '@heroicons/react/outline'
-import { MiniGrid } from '../mini-grid/MiniGrid'
-import { shareStatus } from '../../lib/share'
 import { XCircleIcon } from '@heroicons/react/outline'
+import { StatBar } from '../stats/StatBar'
+import { Histogram } from '../stats/Histogram'
+import { GameStats } from '../../lib/localStorage'
 
 type Props = {
   isOpen: boolean
   handleClose: () => void
-  guesses: string[]
-  handleShare: () => void
+  gameStats: GameStats
 }
 
-export const WinModal = ({
-  isOpen,
-  handleClose,
-  guesses,
-  handleShare,
-}: Props) => {
+export const StatsModal = ({ isOpen, handleClose, gameStats }: Props) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
@@ -37,7 +31,7 @@ export const WinModal = ({
           >
             <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
           </Transition.Child>
-          
+
           {/* This element is to trick the browser into centering the modal contents. */}
           <span
             className="hidden sm:inline-block sm:align-middle sm:h-screen"
@@ -54,44 +48,31 @@ export const WinModal = ({
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+            <div
+              className="inline-block align-bottom bg-white rounded-lg px-4 
+                            pt-5 pb-4 text-left overflow-hidden shadow-xl transform 
+                            transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6"
+            >
               <div className="absolute right-4 top-4">
                 <XCircleIcon
                   className="h-6 w-6 cursor-pointer"
-                  onClick={() => handleClose()}
+                  onClick={handleClose}
                 />
               </div>
               <div>
-                <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
-                  <CheckIcon
-                    className="h-6 w-6 text-green-600"
-                    aria-hidden="true"
-                  />
-                </div>
-                <div className="mt-3 text-center sm:mt-5">
+                <div className="text-center">
                   <Dialog.Title
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900"
                   >
-                    Tu laimėjai!
+                    Statistika
                   </Dialog.Title>
-                  <div className="mt-2">
-                    <MiniGrid guesses={guesses} />
-                    <p className="text-sm text-gray-500">Puikiai padirbėta.</p>
-                  </div>
+                  <StatBar gameStats={gameStats} />
+                  <h4 className="text-lg leading-6 font-medium text-gray-900">
+                    Spėjimų pasiskirstymas
+                  </h4>
+                  <Histogram gameStats={gameStats} />
                 </div>
-              </div>
-              <div className="mt-5 sm:mt-6">
-                <button
-                  type="button"
-                  className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
-                  onClick={() => {
-                    shareStatus(guesses)
-                    handleShare()
-                  }}
-                >
-                  Bendrinti
-                </button>
               </div>
             </div>
           </Transition.Child>

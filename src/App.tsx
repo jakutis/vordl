@@ -6,7 +6,9 @@ import { Keyboard } from './components/keyboard/Keyboard'
 import { AboutModal } from './components/modals/AboutModal'
 import { InfoModal } from './components/modals/InfoModal'
 import { WinModal } from './components/modals/WinModal'
+import { StatsModal } from './components/modals/StatsModal'
 import { isWordInWordList, isWinningWord, solution } from './lib/words'
+import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
   loadGameStateFromLocalStorage,
   resetGameState,
@@ -19,6 +21,8 @@ function App() {
   const [isWinModalOpen, setIsWinModalOpen] = useState(false)
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false)
+  const [isNotEnoughLetters, setIsNotEnoughLetters] = useState(false)
+  const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false)
   const [isGameLost, setIsGameLost] = useState(false)
   const [shareComplete, setShareComplete] = useState(false)
@@ -32,6 +36,8 @@ function App() {
     }
     return loaded.guesses
   })
+
+  const [stats, setStats] = useState(() => loadStats())
 
   useEffect(() => {
     saveGameStateToLocalStorage({ guesses, solution })
@@ -54,6 +60,13 @@ function App() {
   }
 
   const onEnter = () => {
+    if (!(currentGuess.length === 5)) {
+      setIsNotEnoughLetters(true)
+      return setTimeout(() => {
+        setIsNotEnoughLetters(false)
+      }, 2000)
+    }
+
     if (!isWordInWordList(currentGuess)) {
       setIsWordNotFoundAlertOpen(true)
       return setTimeout(() => {
@@ -68,10 +81,12 @@ function App() {
       setCurrentGuess('')
 
       if (winningWord) {
+        setStats(addStatsForCompletedGame(stats, guesses.length))
         return setIsGameWon(true)
       }
 
       if (guesses.length === 5) {
+        setStats(addStatsForCompletedGame(stats, guesses.length + 1))
         setIsGameLost(true)
         return setTimeout(() => {
           setIsGameLost(false)
@@ -97,6 +112,10 @@ function App() {
         <InformationCircleIcon
           className="h-6 w-6 cursor-pointer"
           onClick={() => setIsInfoModalOpen(true)}
+        />
+        <ChartBarIcon
+          className="h-6 w-6 cursor-pointer"
+          onClick={() => setIsStatsModalOpen(true)}
         />
         <XIcon
           className="h-6 w-6 cursor-pointer"
@@ -125,6 +144,11 @@ function App() {
       <InfoModal
         isOpen={isInfoModalOpen}
         handleClose={() => setIsInfoModalOpen(false)}
+      />
+      <StatsModal
+        isOpen={isStatsModalOpen}
+        handleClose={() => setIsStatsModalOpen(false)}
+        gameStats={stats}
       />
       <AboutModal
         isOpen={isAboutModalOpen}
