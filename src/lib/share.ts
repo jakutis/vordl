@@ -4,7 +4,7 @@ import { solutionIndex } from './words'
 export const shareStatus = (guesses: string[]) => {
   navigator.clipboard.writeText(
     'Vordl ' +
-      solutionIndex +
+      (solutionIndex + 1) +
       ' ' +
       guesses.length +
       '/6\n\n' +
