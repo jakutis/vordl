@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/vordl/static/css/main.b60cbce1.css",
-    "main.js": "/vordl/static/js/main.36036e48.js",
+    "main.css": "/vordl/static/css/main.461d0eb0.css",
+    "main.js": "/vordl/static/js/main.eb1c582c.js",
     "static/js/787.cb2662d6.chunk.js": "/vordl/static/js/787.cb2662d6.chunk.js",
     "index.html": "/vordl/index.html",
-    "main.b60cbce1.css.map": "/vordl/static/css/main.b60cbce1.css.map",
-    "main.36036e48.js.map": "/vordl/static/js/main.36036e48.js.map",
+    "main.461d0eb0.css.map": "/vordl/static/css/main.461d0eb0.css.map",
+    "main.eb1c582c.js.map": "/vordl/static/js/main.eb1c582c.js.map",
     "787.cb2662d6.chunk.js.map": "/vordl/static/js/787.cb2662d6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b60cbce1.css",
-    "static/js/main.36036e48.js"
+    "static/css/main.461d0eb0.css",
+    "static/js/main.eb1c582c.js"
   ]
 }
