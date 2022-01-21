@@ -97,6 +97,7 @@ function App() {
 
   return (
     <div className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <Alert message="Nepakankamai raidžių" isOpen={isNotEnoughLetters} />
       <Alert message="Žodis nerastas" isOpen={isWordNotFoundAlertOpen} />
       <Alert
         message={`Pralaimėjai, žodis buvo ${solution}`}
